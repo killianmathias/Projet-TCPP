@@ -1,0 +1,195 @@
+\documentclass[12pt, aspectratio=169]{beamer}
+
+% --- THEME ET CONFIGURATION [cite: 172, 177] ---
+\usetheme{Madrid} 
+\usecolortheme{beaver} % Couleurs sobres (Gris/Rouge)
+\setbeamerfont{normal text}{size=\large} % Police > 18pt en rendu
+\setbeamertemplate{navigation symbols}{} % Pas de symboles de nav
+\setbeamertemplate{caption}[numbered]{} % Pas de numéros de figure [cite: 205]
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[french]{babel}
+\usepackage{graphicx}
+
+% --- METADONNEES ---
+\title[Projet Théorie des Langages]{Développement d'une bibliothèque de manipulation d'automates}
+\subtitle{Retour d'expérience - Module TL2}
+\author{Elouan BOITEUX \and Aymeric MARIAUX \and Killian MATHIAS}
+\institute[Univ. MLP]{Université Marie et Louis Pasteur \\ Licence 3 Informatique}
+\date{}
+
+\begin{document}
+
+\begin{frame}
+    \titlepage
+    \begin{center}
+        \small Tuteur : Julien Bernard
+    \end{center}
+\end{frame}
+
+\begin{frame}{Sommaire}
+    \tableofcontents
+    \vfill
+    \textit{Durée estimée : 20 minutes}
+\end{frame}
+
+\section{Contexte et Mission}
+
+\begin{frame}{1. Contexte du projet}
+    \textbf{Elouan Boiteux | Durée : 2 min}
+    \begin{itemize}
+        \item \textbf{Cadre :} Licence 3 Informatique, Module Théorie des Langages.
+        \item \textbf{Objectif pédagogique :}
+            \begin{itemize}
+                \item Comprendre la création de langage à partir d'automates.
+                \item Mettre en œuvre des algorithmes complexes.
+            \end{itemize}
+        \item \textbf{Notre mission :}
+            \begin{itemize}
+                \item Implémenter une structure Automaton et ses méthodes.
+                \item Public cible de ce rapport : Non-experts.
+            \end{itemize}
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{2. C'est quoi un automate ?}
+    \textbf{Aymeric Mariaux| Durée : 2 min}
+    \begin{columns}
+        \column{0.6\textwidth}
+        \begin{itemize}
+            \item Une machine abstraite simple.
+            \item Composants :
+                \begin{itemize}
+                    \item Des \textbf{États} (Ronds).
+                    \item Des \textbf{Transitions} (Flèches avec lettres).
+                \end{itemize}
+            \item \textbf{Analogie :} Un distributeur de boissons.
+                \item État 0 : Attente pièce.
+                \item Action "Insérer 1€" $\rightarrow$ État 1 : Choix.
+        \end{itemize}
+        \column{0.4\textwidth}
+        \centering
+        % Remplacer par une image réelle
+        \includegraphics[width=\textwidth]{./assets/automate.png} 
+        \textit{Exemple d'automate}
+    \end{columns}
+\end{frame}
+
+\section{Réalisation Technique}
+
+\begin{frame}{3. Contraintes et Outils}
+    \textbf{Killian Mathias | Durée : 2 min}
+    \begin{itemize}
+        \item \textbf{Environnement technique :}
+            \begin{itemize}
+                \item Langage : C++.
+                \item Compilation : CMake.
+                \item Tests : Google Test Framework.
+            \end{itemize}
+        \item \textbf{Les difficultés majeures :}
+            \begin{itemize}
+                \item Choix de structure libre ("Une mauvaise structure amène une mauvaise implémentation")
+                \item Algorithmes complexes
+            \end{itemize}
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{4. Choix de Conception}
+    \textbf{Elouan Boiteux | Durée : 3 min}
+    \begin{block}{Comment représenter l'automate en mémoire ?}
+        Structure possédant un ensemble d'état, de symboles (alphabet) et de transitions
+    \end{block}
+    \begin{itemize}
+        \item \textbf{Pourquoi ?}
+            \begin{itemize}
+                \item Accès rapide aux états par index.
+                \item Structure optimisée pour avoir un parcours performant.
+            \end{itemize}
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{5. Algorithmique}
+    \textbf{Aymeric Mariaux | Durée : 3 min}\\
+    \begin{itemize}
+        \item Développement d'algorithmes complexes
+        \item Exemple : Déterminisation\begin{itemize}
+            \item \textbf{Le problème :} L'automate possède plusieurs choix pour une lettre à partir d'un état.
+            \item \textbf{La solution :} Regrouper les états possibles en un nouvel état.
+            \item \textbf{Résultat :} Un automate prévisible et programmable.
+        \end{itemize}
+    \end{itemize}
+    \vspace{1em}
+    \centering
+\end{frame}
+
+\begin{frame}{6. Validation et Tests}
+    \textbf{Killian Mathias | Durée : 3 min}
+    \begin{itemize}
+        \item \textbf{Stratégie de Test :}
+            \begin{itemize}
+                \item Écriture des tests \textit{avant} le code.
+                \item Vérification des cas particuliers (automate vide).
+            \end{itemize}
+        \item \textbf{La "Moulinette" :}
+            \begin{itemize}
+                \item Script d'évaluation se reposant sur un ensemble de tests sur notre implémentation.
+                \item Résultat actuel : 100\% de réussite.
+            \end{itemize}
+    \end{itemize}
+\end{frame}
+
+\section{Organisation et Vécu}
+
+\begin{frame}{7. Gestion de Projet et Vécu}
+    \textbf{Elouan Boiteux \& Aymeric Mariaux | Durée : 3 min}
+    \begin{itemize}
+        \item \textbf{Planification :}
+            \begin{itemize}
+                \item 12 séances de TP de 1h30.
+                \item Avance prise dès le premier TP
+                \item Travail personnel (soir/weekend).
+            \end{itemize}
+        \item \textbf{Difficultés rencontrées :}
+            \begin{itemize}
+                \item Compréhension des itérateurs C++.
+                \item Algorithmes de Moore et Hopcroft
+            \end{itemize}
+        \item \textbf{Réussite :} Code propre et fonctionnel.
+    \end{itemize}
+\end{frame}
+
+\section{Conclusion}
+
+\begin{frame}{Conclusion et Bilan}
+    \textbf{Killian Mathias | Durée : 2 min}
+    \begin{columns}
+        \column{0.5\textwidth}
+        \textbf{Bilan Technique}
+        \begin{itemize}
+            \item Implémentation opérationnelle.
+            \item Bonus réalisés (dotPrint, Minimisation avec Hopcroft, suppression des $\epsilon$-transitions).
+        \end{itemize}
+        
+        \column{0.5\textwidth}
+        \textbf{Bilan Personnel}
+        \begin{itemize}
+            \item Montée en compétence C++.
+            \item Rigueur algorithmique.
+            \item Optimisation de structure
+        \end{itemize}
+    \end{columns}
+\end{frame}
+
+\begin{frame}
+    \centering
+    \Huge \textbf{Merci de votre attention}
+    
+    \vspace{1cm}
+    \Large Avez-vous des questions ?
+    
+    \vspace{1cm}
+    \small \textit{Projet réalisé dans le cadre de l'UE TCPP}
+\end{frame}
+
+\end{document}
