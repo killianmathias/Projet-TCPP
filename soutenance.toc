@@ -1,0 +1,5 @@
+\babel@toc {french}{}\relax 
+\beamer@sectionintoc {1}{Contexte et Mission}{3}{0}{1}
+\beamer@sectionintoc {2}{Réalisation Technique}{5}{0}{2}
+\beamer@sectionintoc {3}{Organisation et Vécu}{9}{0}{3}
+\beamer@sectionintoc {4}{Conclusion}{10}{0}{4}

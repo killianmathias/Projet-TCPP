@@ -91,12 +91,14 @@ Ces structures sont utilisées partout :
 \end{itemize}
 
 \subsection{Le défi technique}
-Notre mission était de traduire ces schémas graphiques (des ronds et des flèches) en lignes de code performantes capable de réaliser des opérations complexes comme l'intersection ou la minimisation.
+Notre mission était de traduire ces schémas graphiques (des ronds et des flèches) en lignes de code performantes capable de réaliser des opérations complexes comme l'intersection ou la minimisation d'automates.
 \newpage
 \section{Travail réalisé et choix techniques}
 \subsection{Architecture de la solution}
 \subsubsection{Choix de la structure de données}
-Pour représenter un automate en mémoire, nous avions le choix entre plusieurs structures. Nous avons opté pour un std::set d'entier pour les états, un std::set de caractères pour notre alphabet et un std::map qui associe un std::pair d'un entier (état de départ) et d'un symbole à un std::set d'entiers (états d'arrivée).
+Pour représenter un automate en mémoire, nous avions le choix entre plusieurs structures. Nous avons opté pour un \verb|std::set| d'entier pour les états, un \verb|std::set| de caractères pour notre alphabet et un \verb|std::map| qui associe un \verb|std::pair| d'un entier (état de départ) et d'un symbole à un \verb|std::set| d'entiers (états d'arrivée).
+En ce qui concerne la gestion des états initiaux et finaux, nous avons choisi d'utiliser un \verb|std::set| d'entier qui contient les états initaux et un autre \verb|std::set| d'entier qui contient les états finaux.
+
 \textit{Justification :} Ce choix permet un accès rapide et performant aux données importantes de notre automate.
 
 \subsection{Implémentation des algorithmes clés}
@@ -117,7 +119,7 @@ Le projet était découpé en 12 séances de TP de 1h30 chacune. Nous avions ég
     \item \textbf{TP 6 :} Minimisation et bonus.
 \end{itemize}
 \subsection{Analyse du vécu (Difficultés et Réussites)}
-La principale difficulté a été la gestion des itérateurs C++ qui peuvent être complexes à manipuler sans pointeurs. Nous avons également rencontré des difficultés à implémenter des algorithmes complexes mais cela était toute fois formateur.
+La principale difficulté a été la gestion des itérateurs C++ qui peuvent être complexes à manipuler au début. Nous avons également rencontré des difficultés à implémenter des algorithmes complexes mais cela était toute fois formateur.
 \newpage
 \section{Conclusion}
 \subsection{Bilan technique}
@@ -126,10 +128,10 @@ Notre structure `Automaton` est fonctionnelle et passe 100\% des tests fournis. 
 \subsection{Bilan personnel}
 Ce projet nous a permis de :
 \begin{itemize}
-    \item Maîtriser la librairie standard C++ (STL).
+    \item Maîtriser la librairie standard C++ (STD).
     \item Comprendre les notions abordées durant l'UE.
 \end{itemize}
-"Que retenir de ce travail ?" : Qu'une bonne structure de données est la clé d'un algorithme performant.
+\og{}Que retenir de ce travail ?\fg{} : \emph{Une bonne structure de données est la clé d'un algorithme performant.}
 \newpage
 \begin{thebibliography}{9}
 \bibitem{cppref}
@@ -143,7 +145,7 @@ Ce projet nous a permis de :
 \end{thebibliography}
 \newpage
 \section*{Résumé}
-Ce rapport présente la conception et le développement d'une bibliothèque en langage C++ dédiée à la manipulation d'automates finis, réalisée dans le cadre de l'Unité d'Enseignement "Théorie des Langages". L'objectif principal était de traduire des concepts théoriques (déterminisation, minimisation, intersection) en une structure logicielle performante et modulaire. Nous détaillons ici les choix d'architecture, notamment l'utilisation de la librairie standard, ainsi que la méthodologie de développement dirigé par les tests (TDD) adoptée pour garantir la fiabilité du code.
+Ce rapport présente la conception et le développement d'une bibliothèque en langage C++ dédiée à la manipulation d'automates finis, réalisée dans le cadre de l'Unité d'Enseignement \og{}Théorie des Langages\fg{}. L'objectif principal était de traduire des concepts théoriques (déterminisation, minimisation, intersection) en une structure logicielle performante et modulaire. Nous détaillons ici les choix d'architecture, notamment l'utilisation de la librairie standard, ainsi que la méthodologie de développement dirigé par les tests (TDD) adoptée pour garantir la fiabilité du code.
 \vspace{1cm}
 \section*{Abstract}
 This report presents the design and development of a C++ library dedicated to finite automata manipulation, carried out within the "Language Theory" course. The main objective was to translate theoretical concepts (determinization, minimization, intersection) into a high-performance and modular software structure. We detail the architectural choices, specifically the use of the Standard Library , as well as the Test-Driven Development (TDD) methodology adopted to ensure code reliability.
